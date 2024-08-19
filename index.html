@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <style>
         body{
             background-color: rgb(115, 176, 237);
@@ -13,35 +12,36 @@
             background-color: rgb(255, 255, 255);
         }
     </style>
-    
-    
+
 </head>
+
 <body>
-    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
 
     <script>
         const myCanvas = document.getElementById("myCanvas");
         const ctx = myCanvas.getContext("2d");
-        //Cuadros colores
+       
         ctx.fillStyle="#F09FB9"
-        ctx.fillRect(70,70,100,100)
-        
+        ctx.fillRect(20,20,100,100)
+       
         ctx.fillStyle="red"
-        ctx.fillRect(140,140,100,100) 
+        ctx.fillRect(100,100,100,100) 
        
         ctx.fillStyle="rgba(128,244,242,0.3)"
-        ctx.fillRect(200,200,100,100)
-
+        ctx.fillRect(180,180,100,100)
+        
+       
        //cuadros con perimetro sin relleno
         ctx.strokeRect(260,260,100,100)
-        
+
         ctx.strokeStyle="red"
         ctx.lineWidth = 5;
         ctx.strokeRect(20,20,100,100)
 
 
         //triangulo
-       
+
         ctx.beginPath();
         ctx.moveTo(300, 200);
         ctx.lineTo(400, 100);
@@ -50,9 +50,33 @@
         ctx.fill();
         ctx.closePath();
         ctx.stroke();
-       
+
+        //Circulo 
+        ctx.beginPath();
+        ctx.arc(300, 440, 70, 0, 3 * Math.PI);
+        ctx.fillStyle = "rgba(128,244,242,0.3)"
+        ctx.fill();
+        ctx.stroke();
 
 
+        //Circulo relleno
+        ctx.beginPath();
+        ctx.arc(445, 440, 70, 0, 3 * Math.PI);
+        ctx.fillStyle = "orange";
+        ctx.fill();
+        ctx.stroke();
+
+        //Arco 
+        ctx.beginPath();
+        ctx.arc(300, 400, 80, 0.9, .7 * Math.PI);
+        ctx.fill;
+        ctx.stroke();
+
+
+
+
+
+        
     </script>
 </body>
-</html>
+</html> 
