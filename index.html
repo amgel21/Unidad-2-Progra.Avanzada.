@@ -74,6 +74,37 @@
 
 
 
+           //Arco 
+           ctx.beginPath();
+        ctx.arc(800, 400, 80, 0.9, .7 * Math.PI);
+        ctx.fill;
+        ctx.stroke();
+
+        //Letras 
+
+        ctx.font = "20px Georgia";
+        ctx.fillText("Welcome to GT ACADEMY!",150 , 50);
+        ctx.font = "30px Verdana";
+
+        // Create gradient
+        const gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.5", "blue");
+        gradient.addColorStop("1.0", "red");
+
+        // Fill with gradient
+        ctx.fillStyle = gradient;
+        ctx.fillText("Good to see u driver!", 100,100 );
+
+
+
+        //imagen
+        var img = new Image();
+        img.src = "grid-lines.png";
+        ctx.drawImage(img, 50,50);
+
+
+
 
 
         
