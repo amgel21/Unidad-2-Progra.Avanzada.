@@ -103,8 +103,15 @@
         img.src = "grid-lines.png";
         ctx.drawImage(img, 50,50);
 
+        //gradiante
+        const my_gradient = ctx.createLinearGradient(30, 30, 0, 170);
+        my_gradient.addColorStop(0, "black");
+        my_gradient.addColorStop(1, "white");
 
 
+        // Fill Rectangle
+        ctx.fillStyle = my_gradient;
+        ctx.fillRect(380, 200, 150, 100);
 
 
         
