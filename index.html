@@ -22,6 +22,7 @@
         const myCanvas = document.getElementById("myCanvas");
         const ctx = myCanvas.getContext("2d");
        
+        /*
         ctx.fillStyle="#F09FB9"
         ctx.fillRect(20,20,100,100)
        
@@ -86,25 +87,20 @@
         ctx.fillText("Welcome to GT ACADEMY!",150 , 50);
         ctx.font = "30px Verdana";
 
-        // Create gradient
-        const gradient = ctx.createLinearGradient(0, 0, c.width, 0);
-        gradient.addColorStop("0", "magenta");
-        gradient.addColorStop("0.5", "blue");
-        gradient.addColorStop("1.0", "red");
-
-        // Fill with gradient
-        ctx.fillStyle = gradient;
-        ctx.fillText("Good to see u driver!", 100,100 );
-
+    
 
 
         //imagen
+        
         var img = new Image();
-        img.src = "grid-lines.png";
-        ctx.drawImage(img, 50,50);
+        img.src = "123.png";
+        img.onload = function(){
+             ctx.drawImage(img,650,190,100,120);
+        };
+       
 
         //gradiante
-        const my_gradient = ctx.createLinearGradient(30, 30, 0, 170);
+        const my_gradient = ctx.createLinearGradient(60, 20, 0, 170);
         my_gradient.addColorStop(0, "black");
         my_gradient.addColorStop(1, "white");
 
@@ -121,8 +117,19 @@
         // Draw a filled Rectangle
         ctx.fillStyle = grd;
         ctx.fillRect(10, 10, 150, 100);
+        */
+        
+        document.getElementById("myCanvas").addEventListener("mousedown",function(e)
+        {
+     ctx.fillStyle = "rgba(128,244,242,0.3)";
+        
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, 70, 0, 3 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        })
 
         
     </script>
 </body>
-</html> 
+</html>
