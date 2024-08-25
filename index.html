@@ -19,117 +19,41 @@
     <canvas id="myCanvas" width="800" height="600"></canvas>
 
     <script>
-        const myCanvas = document.getElementById("myCanvas");
-        const ctx = myCanvas.getContext("2d");
        
-        /*
-        ctx.fillStyle="#F09FB9"
-        ctx.fillRect(20,20,100,100)
-       
-        ctx.fillStyle="red"
-        ctx.fillRect(100,100,100,100) 
-       
-        ctx.fillStyle="rgba(128,244,242,0.3)"
-        ctx.fillRect(180,180,100,100)
-        
-       
-       //cuadros con perimetro sin relleno
-        ctx.strokeRect(260,260,100,100)
-
-        ctx.strokeStyle="red"
-        ctx.lineWidth = 5;
-        ctx.strokeRect(20,20,100,100)
-
-
-        //triangulo
-
-        ctx.beginPath();
-        ctx.moveTo(300, 200);
-        ctx.lineTo(400, 100);
-        ctx.lineTo(500, 200);
-        ctx.fillStyle = "rgba(128,244,242,0.3)"
-        ctx.fill();
-        ctx.closePath();
-        ctx.stroke();
-
-        //Circulo 
-        ctx.beginPath();
-        ctx.arc(300, 440, 70, 0, 3 * Math.PI);
-        ctx.fillStyle = "rgba(128,244,242,0.3)"
-        ctx.fill();
-        ctx.stroke();
-
-
-        //Circulo relleno
-        ctx.beginPath();
-        ctx.arc(445, 440, 70, 0, 3 * Math.PI);
-        ctx.fillStyle = "orange";
-        ctx.fill();
-        ctx.stroke();
-
-        //Arco 
-        ctx.beginPath();
-        ctx.arc(300, 400, 80, 0.9, .7 * Math.PI);
-        ctx.fill;
-        ctx.stroke();
-
-
-
-           //Arco 
-           ctx.beginPath();
-        ctx.arc(800, 400, 80, 0.9, .7 * Math.PI);
-        ctx.fill;
-        ctx.stroke();
-
-        //Letras 
-
-        ctx.font = "20px Georgia";
-        ctx.fillText("Welcome to GT ACADEMY!",150 , 50);
-        ctx.font = "30px Verdana";
-
     
+     
+    
+// Variables para almacenar la posición anterior del cursor
+let prevX, prevY;
 
+// Obtén el elemento canvas
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
 
-        //imagen
-        
-        var img = new Image();
-        img.src = "123.png";
-        img.onload = function(){
-             ctx.drawImage(img,650,190,100,120);
-        };
-       
+// Manejador del evento mousemove
+canvas.addEventListener('mousemove', (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
 
-        //gradiante
-        const my_gradient = ctx.createLinearGradient(60, 20, 0, 170);
-        my_gradient.addColorStop(0, "black");
-        my_gradient.addColorStop(1, "white");
-
-
-        // Fill Rectangle
-        ctx.fillStyle = my_gradient;
-        ctx.fillRect(380, 200, 150, 100);
-
-        // Crear Radial
-        const grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
-        grd.addColorStop(0, "red");
-        grd.addColorStop(1, "white");
-
-        // Draw a filled Rectangle
-        ctx.fillStyle = grd;
-        ctx.fillRect(10, 10, 150, 100);
-        */
-        
-        document.getElementById("myCanvas").addEventListener("mousedown",function(e)
-        {
-     ctx.fillStyle = "rgba(128,244,242,0.3)";
-        
+    // Dibuja un pequeño cuadrado o círculo en la posición actual
+    ctx.fillStyle = 'blue'; // Color del trazo
+    ctx.fillRect(x, y, 5, 5); // Tamaño del cuadrado (puedes ajustarlo)
+    
+    // Conecta la posición actual con la anterior
+    if (prevX !== undefined && prevY !== undefined) {
         ctx.beginPath();
-        ctx.arc(e.x, e.y, 70, 0, 3 * Math.PI);
-        ctx.fill();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(x, y);
         ctx.stroke();
-        })
+    }
 
+    // Actualiza la posición anterior
+    prevX = x;
+    prevY = y;
+});
         
+  
+                
     </script>
 </body>
 </html>
