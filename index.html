@@ -35,9 +35,9 @@ canvas.addEventListener('mousemove', (event) => {
     const x = event.clientX;
     const y = event.clientY;
 
-    // Dibuja un pequeño cuadrado o círculo en la posición actual
-    ctx.fillStyle = 'blue'; // Color del trazo
-    ctx.fillRect(x, y, 5, 5); // Tamaño del cuadrado (puedes ajustarlo)
+    
+    ctx.fillStyle = 'blue'; 
+    ctx.fillRect(x, y, 5, 5); 
     
     // Conecta la posición actual con la anterior
     if (prevX !== undefined && prevY !== undefined) {
