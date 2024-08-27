@@ -16,22 +16,67 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="800" height="600"></canvas>
+    <canvas id="myCanvas" width="600" height="500"></canvas>
 
     <script>
-       
-    
-     
-    
-// Variables para almacenar la posición anterior del cursor
-let prevX, prevY;
 
-// Obtén el elemento canvas
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-// Manejador del evento mousemove
-canvas.addEventListener('mousemove', (event) => {
+var super_x = 100;
+var super_y = 100;
+
+ctx.fillRect(super_x,super_y,30, 30)
+ctx.strokeRect(super_x,super_y,30, 30)
+
+document.addEventListener('keypress', function(e){
+
+    console.log(e.keyCode)
+
+    switch(e.keyCode)
+    {
+        case 119:
+            super_y+=10;
+        break;
+
+        case 115:
+        super_y-=10;
+            
+        break;
+
+        case 97:
+        super_x+=10;
+        break;
+        
+        case 100:
+            super_x-=10;
+        break;
+
+
+    }
+
+    paint(ctx);
+
+})
+    function paint()
+    {
+        ctx.fillStyle='white';
+        ctx.fillRect(0,0,600,500)
+
+        ctx.fillStyle='red';
+        ctx.fillRect(super_x,super_y,30, 30)
+        ctx.strokeRect(super_x,super_y,30, 30)
+    }
+
+
+
+
+
+
+
+
+
+/*canvas.addEventListener('mousemove', (event) => {
     const x = event.clientX;
     const y = event.clientY;
 
@@ -39,7 +84,7 @@ canvas.addEventListener('mousemove', (event) => {
     ctx.fillStyle = 'blue'; 
     ctx.fillRect(x, y, 5, 5); 
     
-    // Conecta la posición actual con la anterior
+    
     if (prevX !== undefined && prevY !== undefined) {
         ctx.beginPath();
         ctx.moveTo(prevX, prevY);
@@ -50,7 +95,7 @@ canvas.addEventListener('mousemove', (event) => {
     // Actualiza la posición anterior
     prevX = x;
     prevY = y;
-});
+});*/
         
   
                 
