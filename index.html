@@ -26,6 +26,7 @@ const ctx = canvas.getContext('2d');
 var super_x = 100;
 var super_y = 100;
 var direction ='';
+var speed = 5;
 
 paint(ctx);
 
@@ -52,7 +53,9 @@ document.addEventListener('keypress', function(e){
         break;
 
         
-
+        case 32:
+            speed += 2.5;
+        break;
         
 
     }
@@ -64,25 +67,25 @@ document.addEventListener('keypress', function(e){
     function update(){
         switch(direction){
             case 'up':
-            super_y-=10;
+            super_y-=speed;
             if(super_y < 0 )
              super_y = 500;
         break;
 
         case 'down':
-        super_y+=10; 
+        super_y+=speed; 
         if(super_y > 500)
              super_y = 0;  
         break;
 
         case 'left':
-        super_x-=10;
+        super_x-=speed;
         if(super_x < 0)
              super_x = 500;
         break;
 
         case 'right':
-        super_x+=10;
+        super_x+=speed;
             if(super_x > 500)
              super_x = 0;
         break;
@@ -96,6 +99,10 @@ document.addEventListener('keypress', function(e){
     {
         ctx.fillStyle='white';
         ctx.fillRect(0,0,600,500)
+
+        ctx.fillStyle='green';
+        ctx.font= '50px Arial';
+        ctx.fillText("Speed"+speed,300, 50)
 
         ctx.fillStyle='red';
         ctx.fillRect(super_x,super_y,30, 30)
