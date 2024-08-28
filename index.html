@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
 
     <script>
 
@@ -25,9 +25,9 @@ const ctx = canvas.getContext('2d');
 
 var super_x = 100;
 var super_y = 100;
+var direction ='';
 
-ctx.fillRect(super_x,super_y,30, 30)
-ctx.strokeRect(super_x,super_y,30, 30)
+paint(ctx);
 
 document.addEventListener('keypress', function(e){
 
@@ -36,28 +36,62 @@ document.addEventListener('keypress', function(e){
     switch(e.keyCode)
     {
         case 119:
-            super_y+=10;
+            direction = 'up';
         break;
 
         case 115:
-        super_y-=10;
-            
+            direction = 'down';
         break;
 
         case 97:
-        super_x+=10;
+            direction = 'left';
         break;
         
         case 100:
-            super_x-=10;
+            direction = 'right';
         break;
 
+        
+
+        
 
     }
 
-    paint(ctx);
+    
 
 })
+
+    function update(){
+        switch(direction){
+            case 'up':
+            super_y-=10;
+            if(super_y < 0 )
+             super_y = 500;
+        break;
+
+        case 'down':
+        super_y+=10; 
+        if(super_y > 500)
+             super_y = 0;  
+        break;
+
+        case 'left':
+        super_x-=10;
+        if(super_x < 0)
+             super_x = 500;
+        break;
+
+        case 'right':
+        super_x+=10;
+            if(super_x > 500)
+             super_x = 0;
+        break;
+
+
+        
+
+        }
+    }
     function paint()
     {
         ctx.fillStyle='white';
@@ -66,7 +100,15 @@ document.addEventListener('keypress', function(e){
         ctx.fillStyle='red';
         ctx.fillRect(super_x,super_y,30, 30)
         ctx.strokeRect(super_x,super_y,30, 30)
+
+
+
+        update()
+        requestAnimationFrame(paint);
+
     }
+   
+         requestAnimationFrame(paint);
 
 
 
