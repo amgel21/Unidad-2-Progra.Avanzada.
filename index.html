@@ -9,139 +9,56 @@
             background-color: rgb(115, 176, 237);
         }
         canvas{
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(10, 56, 204);
         }
     </style>
 
 </head>
 
 <body>
-    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <canvas id="myCanvas" width="700" height="500"></canvas>
 
     <script>
 
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-//Cuerpo del Kirby
+
+// Cuadrado casa
+ctx.fillStyle = 'yellow';
+ctx.fillRect(250, 190, 300, 280); 
+
+// Techo
 ctx.beginPath();
-ctx.arc(250, 250, 120, 0, 2 * Math.PI);
-ctx.fillStyle = "pink";
+ctx.moveTo(220, 190); 
+ctx.lineTo(430, 50);  
+ctx.lineTo(580, 190); 
+ctx.closePath();
+ctx.fillStyle = '#A52A2A';
 ctx.fill();
 
-//Brazo Izquierdo
-ctx.beginPath();
-ctx.arc(140, 160, 49, 0, 2 * Math.PI);
-ctx.fillStyle = "pink";
-ctx.fill();
+//Puerts
+ctx.fillStyle = "#ADD8E6";
+        ctx.fillRect(280, 210, 80, 85);
+        ctx.fillRect(450, 210, 80, 85);
 
-//Brazo Derecho
-ctx.beginPath();
-ctx.arc(370, 270, 49, 0, 2 * Math.PI);
-ctx.fillStyle = "pink";
-ctx.fill();
-
-//Pies del Kirby
-ctx.beginPath();
-ctx.arc(190, 390, 45, 0, 2 * Math.PI);
-ctx.fillStyle = "red";
-ctx.fill();
+    //
+ctx.fillStyle = "#654321";
+ctx.fillRect(360, 370, 65, 100);
 
 ctx.beginPath();
-ctx.arc(300, 400, 45, 0, 2 * Math.PI);
-ctx.fillStyle = "red";
-ctx.fill();
+        ctx.arc(6, 40, 50, 0, 2 * Math.PI); 
+        ctx.fillStyle = "#FFD700";
+        ctx.fill();
 
 
-//Dibujo de los ojos
-function dibujarOjo(x, y) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.scale(.7, 2.6); // Escala para hacer el ojo ovalado
 
-            // Dibujar el ojo blanco
-            ctx.beginPath();
-            ctx.arc(0, 0, 15, 0, Math.PI * 2);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            ctx.stroke();
 
-            // Dibujar el círculo negro
-            ctx.beginPath();
-            ctx.arc(0, 0, 10, 0, Math.PI * 2);
-            ctx.fillStyle = 'black';
-            ctx.fill();
 
-            // Dibujar el círculo azul
-            ctx.beginPath();
-            ctx.arc(0, -5, 10, 0, Math.PI * 2);
-            ctx.fillStyle = 'blue';
-            ctx.fill();
 
-            // Dibujar el círculo blanco pequeño
-            ctx.beginPath();
-            ctx.arc(0, -10, 5, 0, Math.PI * 2);
-            ctx.fillStyle = 'white';
-            ctx.fill();
 
-            ctx.restore();
-        }
-
-        //Posicion de ambos ojos
-        dibujarOjo(220, 200);
-
-        dibujarOjo(290, 200);
-
-//Dibujar la boca de kirby
-ctx.beginPath();
-ctx.arc(250, 265, 40, 0, Math.PI, false);
-ctx.fillStyle = 'rgb(255, 105, 180)'; 
-ctx.fill();
-
-// Dibujar las pecas de Kirby
-function dibujarPeca(x, y) {
-            ctx.beginPath();
-            ctx.arc(x, y, 8, 0, Math.PI * 2); 
-            ctx.fillStyle = 'red'; 
-            ctx.fill();
-        }
 
         
-        dibujarPeca(190, 260); 
-        dibujarPeca(310, 260); 
-        
-        //Dibujar la estrella de Kirby
-        function dibujarEstrella(cx, cy, spikes, outerRadius, innerRadius) {
-            let rot = Math.PI / 2 * 3;
-            let x = cx;
-            let y = cy;
-            let step = Math.PI / spikes;
 
-            ctx.beginPath();
-            ctx.moveTo(cx, cy - outerRadius);
-            for (let i = 0; i < spikes; i++) {
-                x = cx + Math.cos(rot) * outerRadius;
-                y = cy + Math.sin(rot) * outerRadius;
-                ctx.lineTo(x, y);
-                rot += step;
-
-                x = cx + Math.cos(rot) * innerRadius;
-                y = cy + Math.sin(rot) * innerRadius;
-                ctx.lineTo(x, y);
-                rot += step;
-            }
-            ctx.lineTo(cx, cy - outerRadius);
-            ctx.closePath();
-            ctx.fillStyle = 'yellow';
-            ctx.fill();
-            ctx.strokeStyle = 'gold';
-            ctx.stroke();
-        }
-
-        // Dibujar la estrella 
-        dibujarEstrella(125, 120, 5, 70, 30);
-
-  
-                
     </script>
 </body>
 </html>
