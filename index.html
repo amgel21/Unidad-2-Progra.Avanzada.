@@ -9,46 +9,66 @@
             background-color: rgb(115, 176, 237);
         }
         canvas{
-            background-color: rgb(10, 56, 204);
+            background-color: rgb(137, 164, 253);
         }
     </style>
 
 </head>
 
 <body>
-    <canvas id="myCanvas" width="700" height="500"></canvas>
+    <canvas id="myCanvas" width="850" height="500"></canvas>
 
     <script>
 
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-// Cuadrado casa
-ctx.fillStyle = 'yellow';
-ctx.fillRect(250, 190, 300, 280); 
+// Base del nivel
+ctx.fillStyle = 'orange';
+ctx.fillRect(0, 470, 850, 280);
 
-// Techo
-ctx.beginPath();
-ctx.moveTo(220, 190); 
-ctx.lineTo(430, 50);  
-ctx.lineTo(580, 190); 
-ctx.closePath();
-ctx.fillStyle = '#A52A2A';
-ctx.fill();
+ctx.fillStyle = 'blue';
+ctx.fillRect(200, 250, 115, 220);
 
-//Puerts
-ctx.fillStyle = "#ADD8E6";
-        ctx.fillRect(280, 210, 80, 85);
-        ctx.fillRect(450, 210, 80, 85);
+ctx.fillStyle = 'pink';
+ctx.fillRect(140, 310, 150, 160); 
 
-    //
-ctx.fillStyle = "#654321";
-ctx.fillRect(360, 370, 65, 100);
+ctx.fillStyle = 'green';
+ctx.fillRect(500, 350, 90, 120); 
 
-ctx.beginPath();
-        ctx.arc(6, 40, 50, 0, 2 * Math.PI); 
-        ctx.fillStyle = "#FFD700";
-        ctx.fill();
+ctx.fillStyle = 'green';
+ctx.fillRect(470, 300, 150, 50);
+
+ctx.fillStyle = 'purple';
+ctx.fillRect(750, 310, 150, 160); 
+
+ctx.fillStyle = 'orange';
+ctx.fillRect(140, 130, 40, 40); 
+
+ctx.fillStyle = 'orange';
+ctx.fillRect(250, 110, 40, 40); 
+
+ctx.fillStyle = 'orange';
+ctx.fillRect(400, 165, 40, 40); 
+
+ctx.fillStyle = 'orange';
+ctx.fillRect(550, 100, 40, 40); 
+
+ctx.fillStyle = 'orange';
+ctx.fillRect(650, 140, 40, 40); 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
 
 
 
