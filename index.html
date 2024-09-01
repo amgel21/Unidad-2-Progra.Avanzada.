@@ -22,130 +22,124 @@
 
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
+//Cuerpo del Kirby
+ctx.beginPath();
+ctx.arc(250, 250, 120, 0, 2 * Math.PI);
+ctx.fillStyle = "pink";
+ctx.fill();
 
-var super_x = 100;
-var super_y = 100;
-var direction ='';
-var speed = 5;
+//Brazo Izquierdo
+ctx.beginPath();
+ctx.arc(140, 160, 49, 0, 2 * Math.PI);
+ctx.fillStyle = "pink";
+ctx.fill();
 
-paint(ctx);
+//Brazo Derecho
+ctx.beginPath();
+ctx.arc(370, 270, 49, 0, 2 * Math.PI);
+ctx.fillStyle = "pink";
+ctx.fill();
 
-document.addEventListener('keypress', function(e){
+//Pies del Kirby
+ctx.beginPath();
+ctx.arc(190, 390, 45, 0, 2 * Math.PI);
+ctx.fillStyle = "red";
+ctx.fill();
 
-    console.log(e.keyCode)
-
-    switch(e.keyCode)
-    {
-        case 119:
-            direction = 'up';
-        break;
-
-        case 115:
-            direction = 'down';
-        break;
-
-        case 97:
-            direction = 'left';
-        break;
-        
-        case 100:
-            direction = 'right';
-        break;
-
-        
-        case 32:
-            speed += 2.5;
-        break;
-        
-
-    }
-
-    
-
-})
-
-    function update(){
-        switch(direction){
-            case 'up':
-            super_y-=speed;
-            if(super_y < 0 )
-             super_y = 500;
-        break;
-
-        case 'down':
-        super_y+=speed; 
-        if(super_y > 500)
-             super_y = 0;  
-        break;
-
-        case 'left':
-        super_x-=speed;
-        if(super_x < 0)
-             super_x = 500;
-        break;
-
-        case 'right':
-        super_x+=speed;
-            if(super_x > 500)
-             super_x = 0;
-        break;
+ctx.beginPath();
+ctx.arc(300, 400, 45, 0, 2 * Math.PI);
+ctx.fillStyle = "red";
+ctx.fill();
 
 
-        
+//Dibujo de los ojos
+function dibujarOjo(x, y) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(.7, 2.6); // Escala para hacer el ojo ovalado
 
+            // Dibujar el ojo blanco
+            ctx.beginPath();
+            ctx.arc(0, 0, 15, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.stroke();
+
+            // Dibujar el círculo negro
+            ctx.beginPath();
+            ctx.arc(0, 0, 10, 0, Math.PI * 2);
+            ctx.fillStyle = 'black';
+            ctx.fill();
+
+            // Dibujar el círculo azul
+            ctx.beginPath();
+            ctx.arc(0, -5, 10, 0, Math.PI * 2);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+
+            // Dibujar el círculo blanco pequeño
+            ctx.beginPath();
+            ctx.arc(0, -10, 5, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+            ctx.restore();
         }
-    }
-    function paint()
-    {
-        ctx.fillStyle='white';
-        ctx.fillRect(0,0,600,500)
 
-        ctx.fillStyle='green';
-        ctx.font= '50px Arial';
-        ctx.fillText("Speed"+speed,300, 50)
+        //Posicion de ambos ojos
+        dibujarOjo(220, 200);
 
-        ctx.fillStyle='red';
-        ctx.fillRect(super_x,super_y,30, 30)
-        ctx.strokeRect(super_x,super_y,30, 30)
+        dibujarOjo(290, 200);
 
+//Dibujar la boca de kirby
+ctx.beginPath();
+ctx.arc(250, 265, 40, 0, Math.PI, false);
+ctx.fillStyle = 'rgb(255, 105, 180)'; 
+ctx.fill();
 
+// Dibujar las pecas de Kirby
+function dibujarPeca(x, y) {
+            ctx.beginPath();
+            ctx.arc(x, y, 8, 0, Math.PI * 2); 
+            ctx.fillStyle = 'red'; 
+            ctx.fill();
+        }
 
-        update()
-        requestAnimationFrame(paint);
-
-    }
-   
-         requestAnimationFrame(paint);
-
-
-
-
-
-
-
-
-
-/*canvas.addEventListener('mousemove', (event) => {
-    const x = event.clientX;
-    const y = event.clientY;
-
-    
-    ctx.fillStyle = 'blue'; 
-    ctx.fillRect(x, y, 5, 5); 
-    
-    
-    if (prevX !== undefined && prevY !== undefined) {
-        ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
-        ctx.lineTo(x, y);
-        ctx.stroke();
-    }
-
-    // Actualiza la posición anterior
-    prevX = x;
-    prevY = y;
-});*/
         
+        dibujarPeca(190, 260); 
+        dibujarPeca(310, 260); 
+        
+        //Dibujar la estrella de Kirby
+        function dibujarEstrella(cx, cy, spikes, outerRadius, innerRadius) {
+            let rot = Math.PI / 2 * 3;
+            let x = cx;
+            let y = cy;
+            let step = Math.PI / spikes;
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - outerRadius);
+            for (let i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+            }
+            ctx.lineTo(cx, cy - outerRadius);
+            ctx.closePath();
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+            ctx.strokeStyle = 'gold';
+            ctx.stroke();
+        }
+
+        // Dibujar la estrella 
+        dibujarEstrella(125, 120, 5, 70, 30);
+
   
                 
     </script>
