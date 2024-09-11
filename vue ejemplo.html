@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <h2>Click: {{ clickContador }}</h2>
+    <button @click="incrementarClick">Hago click aquí, para visualizar el conteo de clicks</button>
+
+    <hr>
+
+    <h2>Añadir Persona</h2>
+
+   
+    <input type="text" v-model="nombre" placeholder="Escribe el nombre de la persona">
+
+    
+    <input type="text" v-model="rol" placeholder="Asignar rol">
+
+    
+    <button @click="subirPersona">Subir</button>
+
+    <hr>
+
+  
+    <h2>Lista de Personas y Roles</h2>
+    <ul>
+        <li v-for="(persona, index) in listaPersonas" :key="index">
+            {{ persona.nombre }} - {{ persona.rol }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    const { createApp } = Vue;
+
+    createApp({
+        data() {
+            return {
+                clickContador: 0,
+                nombre: '',
+                rol: '',
+                listaPersonas: [] 
+            }
+        },
+        methods: {
+            incrementarClick() {
+                this.clickContador++;
+            },
+            subirPersona() {
+                
+                if (this.nombre && this.rol) {
+                    
+                    this.listaPersonas.push({ nombre: this.nombre, rol: this.rol });
+                    
+                    
+                    this.nombre = '';
+                    this.rol = '';
+                } else {
+                    alert("Por favor, complete todos los campos.");
+                }
+            }
+        }
+    }).mount('#main');
+</script>
+
+</body>
+</html>
